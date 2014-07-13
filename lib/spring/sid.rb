@@ -36,7 +36,8 @@ module Spring
     end
 
     def self.pgid
-      sid
+      return sid if ENV['CIRCLECI']
+      Process.getpgid(sid)
     end
   end
 end
